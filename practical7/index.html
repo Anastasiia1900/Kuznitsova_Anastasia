@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>To-Do List</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Список справ</h1>
+
+  <form id="taskForm">
+    <input type="text" id="title" placeholder="Назва задачі" required>
+
+    <input type="date" id="deadline" required>
+
+    <select id="priority">
+      <option value="low">Низький</option>
+      <option value="medium">Середній</option>
+      <option value="high">Високий</option>
+    </select>
+
+    <button type="submit">Додати</button>
+  </form>
+
+  <div class="filters">
+    <button onclick="filterTasks('all')">Всі</button>
+    <button onclick="filterTasks('active')">Активні</button>
+    <button onclick="filterTasks('completed')">Виконані</button>
+  </div>
+
+  <div class="sort">
+    <button onclick="sortByDeadline()">Сортувати за дедлайном</button>
+    <button onclick="sortByPriority()">Сортувати за пріоритетом</button>
+  </div>
+
+  <ul id="taskList"></ul>
+</div>
+
+  <script src="script.js"></script>
+</body>
+</html>

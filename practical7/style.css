@@ -1,0 +1,149 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.container {
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  width: 420px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+input, select {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  outline: none;
+  transition: 0.3s;
+}
+
+input:focus, select:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 5px rgba(102,126,234,0.5);
+}
+
+button {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: bold;
+}
+
+form button {
+  background: #667eea;
+  color: white;
+}
+
+form button:hover {
+  background: #5a67d8;
+}
+
+.filters, .sort {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.filters button, .sort button {
+  flex: 1;
+  margin: 3px;
+  background: #eee;
+}
+
+.filters button:hover, .sort button:hover {
+  background: #ddd;
+}
+
+/* список задач */
+ul {
+  list-style: none;
+}
+
+li {
+  background: #f9f9f9;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  transition: 0.3s;
+  position: relative;
+}
+
+li:hover {
+  transform: scale(1.02);
+}
+
+li strong {
+  font-size: 16px;
+}
+
+.completed {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+/* пріоритет */
+.high {
+  border-left: 6px solid #ff4d4d;
+}
+
+.medium {
+  border-left: 6px solid #ffa502;
+}
+
+.low {
+  border-left: 6px solid #2ed573;
+}
+
+/* кнопки в задачі */
+li button {
+  margin-top: 8px;
+  margin-right: 5px;
+  padding: 5px 8px;
+  font-size: 12px;
+}
+
+li button:nth-child(1) {
+  background: #2ed573;
+  color: white;
+}
+
+li button:nth-child(2) {
+  background: #ff4757;
+  color: white;
+}
+
+li button:nth-child(3) {
+  background: #1e90ff;
+  color: white;
+}
+
+li button:hover {
+  opacity: 0.8;
+}
