@@ -1,34 +1,35 @@
 function fetchData(id) {
     return new Promise((resolve) => {
-        let delay = Math.floor(Math.random() * 3000) + 1000;
+        const delay = Math.floor(Math.random() * 2000) + 1000;
+
         setTimeout(() => {
-            resolve(`Дані для ID ${id} (затримка ${delay}ms)`);
+            resolve(`Дані для ID ${id} (затримка ${delay} мс)`);
         }, delay);
     });
 }
+
 async function processData() {
-    let parallelDiv = document.getElementById("parallelResults");
-    let sequentialDiv = document.getElementById("sequentialResults");
-    parallelDiv.innerHTML = "Очікування...";
-    sequentialDiv.innerHTML = "";
-    let parallelResults = await Promise.all([
-        fetchData(1),
-        fetchData(2),
-        fetchData(3)
-    ]);
-    parallelDiv.innerHTML = "";
-    parallelResults.forEach(result => {
-        let div = document.createElement("div");
-        div.className = "result";
-        div.textContent = result;
-        parallelDiv.appendChild(div);
-    });
-    let ids = [4,5,6];
-    for await (let result of ids.map(id => fetchData(id))) {
-        let div = document.createElement("div");
-        div.className = "result";
-        div.textContent = result;
-        sequentialDiv.appendChild(div);
+    try {
+        console.log("Паралельне виконання");
+
+        const parallelResults = await Promise.all([
+            fetchData(1),
+            fetchData(2),
+            fetchData(3)
+        ]);
+
+        console.log("Результати (паралельно):");
+        console.log(parallelResults);
+        console.log("\nПослідовне виконання");
+
+        const requests = [4, 5, 6].map(id => fetchData(id));
+
+        for await (const result of requests) {
+            console.log("Результат:", result);
+        }
+    } catch (error) {
+        console.log("Помилка:", error);
     }
 }
-document.getElementById("runBtn").addEventListener("click", processData);
+
+processData();
